@@ -1,0 +1,21 @@
+.Layout {
+    height: 100vh;
+}
+
+.Header {
+    background: #176381;
+    margin-bottom: 50px;
+}
+
+.Menu {
+    background: #176381;
+    line-height: 64px;
+}
+
+.Content {
+    padding: 0 50px;
+}
+
+.Footer {
+    text-align: center;
+}
