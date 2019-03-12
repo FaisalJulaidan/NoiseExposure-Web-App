@@ -8,6 +8,13 @@ const TableView = (props) => {
     const noiseData = [{}, {} , {}];
     const columns = [
         {
+            title: '#',
+            dataIndex: '#',
+            key: '#',
+            render: (text, record, index) => (<p>{index+1}</p>),
+
+        },
+        {
             title: 'Noise Level (dB)',
             key: 'NoiseLevel',
             render: (text, record, index) => (<p>55dB</p>),
@@ -61,7 +68,7 @@ const TableView = (props) => {
             columns={columns}
             dataSource={noiseData}
             pagination={true}
-            scroll={{ y: 500 }}
+            size='middle'
         />
     );
 };
