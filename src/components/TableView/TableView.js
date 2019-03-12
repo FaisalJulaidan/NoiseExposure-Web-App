@@ -1,6 +1,7 @@
 import React from 'react';
-import { Table } from 'antd';
-import styles from './TableView.module.css';
+import { Table, Badge } from 'antd';
+import styles from "./TableView.module.css"
+
 
 
 
@@ -29,9 +30,10 @@ const TableView = (props) => {
             key: 'Severity',
             render: (text, record, index) => {
 
-                return (<p>
-                    Normal
-                </p>);
+                return (
+                    <p><Badge status="success" text="Normal" /></p>
+
+                );
 
 
             },
