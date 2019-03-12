@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MapView from './components/MapView/MapView';
 
 class App extends Component {
   render() {
@@ -9,6 +10,7 @@ class App extends Component {
             Noise Exposure Web Application
           </p>
         </header>
+        <MapView />
       </div>
     );
   }
