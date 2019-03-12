@@ -5,7 +5,7 @@ import styles from './TableView.module.css';
 
 
 const TableView = (props) => {
-
+    const noiseData = [{}, {} , {}];
     const columns = [
         {
             title: 'Noise Level (dB)',
@@ -59,7 +59,7 @@ const TableView = (props) => {
     return (
         <Table
             columns={columns}
-            // dataSource={noiseData}
+            dataSource={noiseData}
             pagination={true}
             scroll={{ y: 500 }}
         />
