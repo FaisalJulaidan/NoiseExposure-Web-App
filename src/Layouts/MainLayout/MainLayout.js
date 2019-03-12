@@ -1,6 +1,7 @@
 import React from 'react';
 import { Layout, Menu } from 'antd';
 import styles from './MainLayout.module.css';
+import TableView from '../../components/TableView/TableView'
 
 
 const { Header, Content, Footer } = Layout;
@@ -26,7 +27,7 @@ const MainLayout = (props) => {
 
             <Content className={styles.Content}>
 
-                <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>Content</div>
+                <TableView/>
             </Content>
 
 
