@@ -13,8 +13,9 @@
 }
 
 .Content {
+    position: relative;
     background: #fff;
-    padding: 24px;
+    /*padding: 24px;*/
     min-height: 280px;
     width: 85%;
     margin: 0 auto;

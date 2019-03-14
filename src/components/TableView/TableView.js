@@ -66,12 +66,15 @@ const TableView = (props) => {
 
 
     return (
-        <Table
-            columns={columns}
-            dataSource={noiseData}
-            pagination={true}
-            size='middle'
-        />
+        <div className={styles.TableView}>
+            <Table
+                columns={columns}
+                dataSource={noiseData}
+                pagination={true}
+                size='middle'
+            />
+        </div>
+
     );
 };
 

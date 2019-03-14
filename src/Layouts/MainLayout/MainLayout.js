@@ -2,6 +2,7 @@ import React from 'react';
 import { Layout, Menu } from 'antd';
 import styles from './MainLayout.module.css';
 import TableView from '../../components/TableView/TableView'
+import MapView from '../../components/MapView/MapView';
 
 
 const { Header, Content, Footer } = Layout;
@@ -27,7 +28,8 @@ const MainLayout = (props) => {
 
             <Content className={styles.Content}>
 
-                <TableView/>
+                {/*<TableView/>*/}
+                <MapView/>
             </Content>
 
 
