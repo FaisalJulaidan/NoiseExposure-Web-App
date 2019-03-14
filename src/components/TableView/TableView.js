@@ -6,7 +6,9 @@ import styles from "./TableView.module.css"
 
 
 const TableView = (props) => {
-    const noiseData = [{}, {} , {}];
+    const {noiseData} = props;
+
+    console.log(noiseData);
     const columns = [
         {
             title: '#',
@@ -16,47 +18,49 @@ const TableView = (props) => {
 
         },
         {
-            title: 'Noise Level (dB)',
-            key: 'NoiseLevel',
-            render: (text, record, index) => (<p>55dB</p>),
-        },
-        {
-            title: 'Location Name',
-            key: 'LocationName',
-            render: (text, record, index) => (<p>Queen Street</p>),
+            title: 'Noise Level',
+            key: 'noiseLevel',
+            render: (text, record, index) => (<p>{record.level}dB</p>),
         },
         {
             title: 'Severity',
-            key: 'Severity',
+            key: 'severity',
             render: (text, record, index) => {
 
                 return (
                     <p><Badge status="success" text="Normal" /></p>
 
                 );
-
-
             },
+        },
+        {
+            title: 'Location Name',
+            key: 'locationName',
+            render: (text, record, index) => (<p>{record.locationName}</p>),
         },
         {
             title: 'Noise Type',
-            key: 'NoiseType',
+            key: 'noiseType',
             render: (text, record, index) => {
 
                 return (<p>
-                    Moderate Traffic
+                    {record.noiseType}
                 </p>);
-
 
             },
         },
         {
+            title: 'Device Model',
+            key: 'deviceModel',
+            render: (text, record, index) => (<p>{record.deviceModel}</p>),
+        },
+        {
             title: 'Timestamp',
-            key: 'Timestamp',
+            key: 'timeStamp',
             render: (text, record, index) => {
 
                 return (<p>
-                    12/03/2018 12:44:23 GMT
+                    {record.timeStamp}
                 </p>);
 
 

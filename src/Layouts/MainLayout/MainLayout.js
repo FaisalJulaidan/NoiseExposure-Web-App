@@ -3,7 +3,7 @@ import { Layout, Menu } from 'antd';
 import styles from './MainLayout.module.css';
 import TableView from '../../components/TableView/TableView'
 import MapView from '../../components/MapView/MapView';
-
+import {Route, Switch} from 'react-router-dom';
 
 const { Header, Content, Footer } = Layout;
 
@@ -27,8 +27,18 @@ const MainLayout = (props) => {
 
 
             <Content className={styles.Content}>
-                {/*<TableView/>*/}
-                <MapView/>
+
+                <Switch>
+                    <Route path={'/'} exact render={routeData => {
+                        return <TableView noiseData={props.noiseData}/>
+                    }}
+                    />
+                    <Route path={'/mapView'} render={routeData => {
+                        return <MapView noiseData={props.noiseData}/>
+                    }}
+                    />
+                </Switch>
+
             </Content>
 
 
