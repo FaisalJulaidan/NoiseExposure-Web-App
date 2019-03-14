@@ -4,10 +4,16 @@ import styles from './MainLayout.module.css';
 import TableView from '../../components/TableView/TableView'
 import MapView from '../../components/MapView/MapView';
 import {Route, Switch} from 'react-router-dom';
+import {history} from "../../utilities";
 
 const { Header, Content, Footer } = Layout;
 
 const MainLayout = (props) => {
+
+    const handleMenuClick = (e) => {
+        history.push(`${e.key}`)
+    };
+
     return (
         <Layout className={styles.Layout}>
 
@@ -18,10 +24,11 @@ const MainLayout = (props) => {
                     mode="horizontal"
                     defaultSelectedKeys={['2']}
                     className={styles.Menu}
+                    onClick={handleMenuClick}
                 >
-                    <Menu.Item key="1">Table View</Menu.Item>
-                    <Menu.Item key="2">Map</Menu.Item>
-                    <Menu.Item key="3">About</Menu.Item>
+                    <Menu.Item key="/">Table View</Menu.Item>
+                    <Menu.Item key="/mapView">Map</Menu.Item>
+                    <Menu.Item key="/about">About</Menu.Item>
                 </Menu>
             </Header>
 

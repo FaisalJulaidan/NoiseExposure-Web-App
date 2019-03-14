@@ -10,6 +10,7 @@
     "craco-antd": "^1.10.0",
     "customize-cra": "^0.2.12",
     "google-maps-react": "^2.0.2",
+    "history": "^4.7.2",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
     "react": "^16.8.4",
