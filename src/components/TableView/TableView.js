@@ -75,6 +75,8 @@ const TableView = (props) => {
                 dataSource={noiseData}
                 pagination={true}
                 size='middle'
+                scroll={{y: 500}}
+                loading={(!(!!noiseData))}
             />
         </div>
 
