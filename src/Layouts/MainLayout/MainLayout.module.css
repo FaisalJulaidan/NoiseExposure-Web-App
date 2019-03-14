@@ -19,6 +19,7 @@
     min-height: 280px;
     width: 85%;
     margin: 0 auto;
+    overflow:auto;
 }
 
 .Footer {

@@ -52,7 +52,10 @@ const TableView = (props) => {
         {
             title: 'Device Model',
             key: 'deviceModel',
-            render: (text, record, index) => (<p>{record.deviceModel}</p>),
+            render: (text, record, index) => (
+                <p>
+                    {record.deviceModel.split(' ').join('') ? record.deviceModel : "Unknown"}
+                </p>),
         },
         {
             title: 'Timestamp',
@@ -71,11 +74,12 @@ const TableView = (props) => {
     return (
         <div className={styles.TableView}>
             <Table
+                rowKey="uid"
                 columns={columns}
                 dataSource={noiseData}
-                pagination={true}
+                pagination={{defaultPageSize: 10, position: 'both'}}
                 size='middle'
-                scroll={{y: 500}}
+                // scroll={{y: 500, x: 100}}
                 loading={(!(!!noiseData))}
             />
         </div>
