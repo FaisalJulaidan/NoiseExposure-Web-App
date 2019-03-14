@@ -27,7 +27,6 @@ const MainLayout = (props) => {
 
 
             <Content className={styles.Content}>
-
                 {/*<TableView/>*/}
                 <MapView/>
             </Content>

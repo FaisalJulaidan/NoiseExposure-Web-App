@@ -64,7 +64,6 @@ const TableView = (props) => {
         },
     ];
 
-
     return (
         <div className={styles.TableView}>
             <Table
