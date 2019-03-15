@@ -1,16 +1,16 @@
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import React from 'react';
+import { severityStyle } from './../../utilities';
 
 //used https://www.npmjs.com/package/google-maps-react
 // and https://itnext.io/google-maps-react-makes-adding-google-maps-api-to-a-react-app-a-breeze-effb7b89e54
 
 const mapStyles = {
-        width: '100%',
-        height: '100%',
-        border: '3px solid',
-        borderColor: '#018A99',
-    };
-
+    width: '100%',
+    height: '100%',
+    border: '3px solid',
+    borderColor: '#018A99',
+};
 export class MapView extends React.Component{
     constructor(props) {
         super(props);
@@ -20,7 +20,6 @@ export class MapView extends React.Component{
             selectedPlace: {}
         }
     }
-
     onMarkerClick = (props, marker, e) => {
         this.setState({
             selectedPlace: props,
@@ -40,7 +39,7 @@ export class MapView extends React.Component{
 
     render() {
         const {noiseData} = this.props;
-
+        const {selectedPlace} = this.state;
         return (
                 <div>
                     {noiseData ?
@@ -57,25 +56,26 @@ export class MapView extends React.Component{
                                 <Marker
                                     key={key}
                                     name={marker.locationName}
-                                    // description={marker.description}
                                     position={{ lat: marker.latitude, lng: marker.longitude}}
                                     dBLevel={marker.level}
                                     severity={marker.severity}
                                     noiseType={marker.noiseType}
                                     device={marker.deviceModel}
                                     timeStamp={marker.timeStamp}
-                                    onClick={this.onMarkerClick} >
+                                    onClick={this.onMarkerClick}
+                                    icon={{url: severityStyle(marker.severity).markerLink}}
+                                    >
                                 </Marker>
                             ))}
                             <InfoWindow
                                 marker = { this.state.activeMarker }
                                 visible = { this.state.showingInfoWindow }>
-                                <h1>{this.state.selectedPlace.name}</h1>
-                                <p>Noise Level: {this.state.selectedPlace.dBLevel}</p>
-                                <p>Severity: {this.state.selectedPlace.severity}</p>
-                                <p>Noise Type: {this.state.selectedPlace.noiseType}</p>
-                                <p>Device Model: {this.state.selectedPlace.device}</p>
-                                <p>Timestamp: {this.state.selectedPlace.timeStamp}</p>
+                                    <h1>{selectedPlace.name}</h1>
+                                    <p>Noise Level: {selectedPlace.dBLevel ? selectedPlace.dBLevel : "Unknown"} dB</p>
+                                    <p>Severity: {selectedPlace.severity ? selectedPlace.severity : "Unknown"}</p>
+                                    <p>Noise Type: {selectedPlace.noiseType  ? selectedPlace.noiseType : "Unknown"}</p>
+                                    <p>Device Model: {selectedPlace.device  ? selectedPlace.device : "Unknown"}</p>
+                                    <p>Timestamp: {selectedPlace.timeStamp  ? selectedPlace.timeStamp : "Unknown"}</p>
                             </InfoWindow>
                         </Map>
                         : null
