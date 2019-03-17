@@ -25,3 +25,9 @@
 .Footer {
     text-align: center;
 }
+
+.Switch {
+    position: fixed;
+    left: 85%;
+    bottom: 80%;
+}
