@@ -27,7 +27,7 @@ const MainLayout = (props) => {
                     className={styles.Menu}
                     onClick={handleMenuClick}
                 >
-                    <Menu.Item key="/tableView">Table View</Menu.Item>
+                    <Menu.Item key="/">Table View</Menu.Item>
                     <Menu.Item key="/mapView">Map</Menu.Item>
                     <Menu.Item key="/about">About</Menu.Item>
                 </Menu>
