@@ -73,6 +73,9 @@ class Login extends React.Component {
                                 <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Email" />
                             )}
                         </Form.Item>
+                        {/*the above code contains rules, this allows for you to add some extra validation to the form as the antD form
+                        knows what an email is and should look like so adding a rule for the type to be email will enforce that whatever is
+                        in the field is in fact an email*/}
                         <Form.Item>
                             {getFieldDecorator('password', {
                                 rules: [{ required: true, message: 'Please input your Password!' }],
