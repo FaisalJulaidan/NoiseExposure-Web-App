@@ -1,9 +1,14 @@
 import React from 'react'
 import styles from '../../Layouts/MainLayout/MainLayout.module.css';
 import { Modal, Switch, Form, Icon, Input, Button, Checkbox } from 'antd';
+import {http} from '../../utilities';
 //import Form from "antd/lib/form/Form";
 class Login extends React.Component {
-    state = { visible: false }
+    state = { 
+        visible: false,
+        email: '',
+        password: '' 
+    }
 
     showModal = () => {
         this.setState({
@@ -30,11 +35,15 @@ class Login extends React.Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log('Received values of form: ', values);
+                this.onLogIn(values.email, values.password)
             }
         });
     }
 
-
+    onLogIn = (email, password) => {
+        console.log("User Logged In")
+        http.post('/auth', {email, password})
+    }
 
     render() {
         const { getFieldDecorator } = this.props.form;
@@ -51,10 +60,10 @@ class Login extends React.Component {
                 >
                     <Form onSubmit={this.handleSubmit} className="login-form">
                         <Form.Item>
-                            {getFieldDecorator('userName', {
-                                rules: [{ required: true, message: 'Please input your username!' }],
+                            {getFieldDecorator('email', {
+                                rules: [{ required: true, message: 'Please input your email!' }, {type: 'email', message: 'The input is not valid E-mail!',}], 
                             })(
-                                <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
+                                <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Email" />
                             )}
                         </Form.Item>
                         <Form.Item>
@@ -65,17 +74,17 @@ class Login extends React.Component {
                             )}
                         </Form.Item>
                         <Form.Item>
-                            {getFieldDecorator('remember', {
+                            {/* {getFieldDecorator('remember', {
                                 valuePropName: 'checked',
                                 initialValue: true,
                             })(
                                 <Checkbox>Remember me</Checkbox>
                             )}
-                            <a className="login-form-forgot" href="">Forgot password</a>
-                            <Button type="primary" htmlType="submit" className="login-form-button">
+                            <a className="login-form-forgot" href="">Forgot password</a> */}
+                            <Button type="primary" htmlType="submit" className="login-form-button" onClick={this.onLogIn}>
                                 Log in
                             </Button>
-                            Or <a href="">register now!</a>
+                            {/* Or <a href="">register now!</a> */}
                         </Form.Item>
                     </Form>
                 </Modal>
