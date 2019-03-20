@@ -12,6 +12,8 @@ class TableView extends React.Component {
         searchText: '',
     };
 
+    // This function will be reused by the columns that need searching functionality as it takes the dataIndex which represent
+    // the type of data the column has. It goes through all rows and look for rows that have the entered text as its value.
     getColumnSearchProps = (dataIndex) => ({
         filterDropdown: ({
                              setSelectedKeys, selectedKeys, confirm, clearFilters,
