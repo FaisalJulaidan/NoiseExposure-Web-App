@@ -12,6 +12,10 @@
     line-height: 64px;
 }
 
+.LogOutBtn {
+    float: right;
+    margin-top: 17px;
+}
 .Content {
     position: relative;
     background: #fff;

@@ -1,33 +1,32 @@
 import React from 'react'
 import styles from '../../Layouts/MainLayout/MainLayout.module.css';
-import { Modal, Switch, Form, Icon, Input, Button, Checkbox } from 'antd';
+import { Modal, Switch, Form, Icon, Input} from 'antd';
 import {http} from '../../utilities';
-//import Form from "antd/lib/form/Form";
 class Login extends React.Component {
     state = { 
         visible: false,
         email: '',
         password: '' 
-    }
+    };
 
     showModal = () => {
         this.setState({
             visible: true,
         });
-    }
+    };
 
     closeModal = () => {
         this.setState({
             visible: false,
         });
-    }
+    };
 
     handleCancel = (e) => {
         console.log(e);
         this.setState({
             visible: false,
         });
-    }
+    };
 
     handleSubmit = (e) => {
         e.preventDefault();
@@ -37,7 +36,7 @@ class Login extends React.Component {
                 this.onLogIn(values.email, values.password)
             }
         });
-    }
+    };
 
     onLogIn = (email, password) => {
         http.post('/auth', {email, password})
@@ -51,7 +50,7 @@ class Login extends React.Component {
         .catch(function (error){
             console.log(error)
         })
-    }
+    };
 
     render() {
         const { getFieldDecorator } = this.props.form;
