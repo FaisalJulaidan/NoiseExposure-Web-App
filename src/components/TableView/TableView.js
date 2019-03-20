@@ -18,11 +18,27 @@ const TableView = (props) => {
         {
             title: 'Noise Level',
             key: 'noiseLevel',
+            sorter: (a, b) => a.level - b.level,
             render: (text, record, index) => (<p>{record.level ? record.level : "Unknown"}dB</p>),
         },
         {
+            filters: [{
+                text: 'Normal',
+                value: 'Normal',
+            }, {
+                text: 'High',
+                value: 'High',
+            }, {
+                text: 'Dangerous',
+                value: 'Dangerous',
+            }
+            ],
+            // specify the condition of filtering result
+            // here is that finding the name started with `value`
+            onFilter: (value, record) => record.severity.indexOf(value) === 0,
             title: 'Severity',
             key: 'severity',
+            dataIndex: 'severity',
             render: (text, record, index) => {
                 return (
                     <p><Badge status={severityStyle(record.severity).status} text={record.severity ? record.severity : "Unknown"} /></p>
@@ -56,6 +72,7 @@ const TableView = (props) => {
         {
             title: 'Timestamp',
             key: 'timeStamp',
+            sorter: (a, b) => new Date(a.timeStamp).valueOf() - new Date(b.timeStamp).valueOf(),
             render: (text, record, index) => {
 
                 return (<p>
