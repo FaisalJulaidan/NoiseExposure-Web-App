@@ -16,8 +16,7 @@ class Login extends React.Component {
         });
     }
 
-    handleOk = (e) => {
-        console.log(e);
+    closeModal = () => {
         this.setState({
             visible: false,
         });
@@ -41,8 +40,17 @@ class Login extends React.Component {
     }
 
     onLogIn = (email, password) => {
-        console.log("User Logged In")
         http.post('/auth', {email, password})
+        .then(response => {
+            console.log(response)
+            localStorage.setItem("user", JSON.stringify(response.data.data.user));
+            localStorage.setItem("token", response.data.data.token);
+            localStorage.setItem("refresh", response.data.data.refresh);
+            this.closeModal();
+        })
+        .catch(function (error){
+            console.log(error)
+        })
     }
 
     render() {
@@ -55,10 +63,10 @@ class Login extends React.Component {
                 <Modal
                     title="Login"
                     visible={this.state.visible}
-                    onOk={this.handleOk}
+                    onOk={this.handleSubmit}
                     onCancel={this.handleCancel}
                 >
-                    <Form onSubmit={this.handleSubmit} className="login-form">
+                    <Form className="login-form">
                         <Form.Item>
                             {getFieldDecorator('email', {
                                 rules: [{ required: true, message: 'Please input your email!' }, {type: 'email', message: 'The input is not valid E-mail!',}], 
@@ -81,9 +89,9 @@ class Login extends React.Component {
                                 <Checkbox>Remember me</Checkbox>
                             )}
                             <a className="login-form-forgot" href="">Forgot password</a> */}
-                            <Button type="primary" htmlType="submit" className="login-form-button" onClick={this.onLogIn}>
+                            {/* <Button type="primary" htmlType="submit" className="login-form-button">
                                 Log in
-                            </Button>
+                            </Button> */}
                             {/* Or <a href="">register now!</a> */}
                         </Form.Item>
                     </Form>
