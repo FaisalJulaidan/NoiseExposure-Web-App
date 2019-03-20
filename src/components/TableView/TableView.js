@@ -102,7 +102,7 @@ class TableView extends React.Component {
                 ],
                 // specify the condition of filtering result
                 // here is that finding the name started with `value`
-                onFilter: (value, record) => record.severity.indexOf(value) === 0,
+                onFilter: (value, record) => record.severity ? record.severity.indexOf(value) === 0 : false,
                 title: 'Severity',
                 key: 'severity',
                 dataIndex: 'severity',
