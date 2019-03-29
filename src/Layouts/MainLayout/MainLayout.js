@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Menu, Button} from 'antd';
+import { Layout, Menu, Button, Modal} from 'antd';
 import styles from './MainLayout.module.css';
 import TableView from '../../components/TableView/TableView'
 import MapView from '../../components/MapView/MapView';
@@ -58,9 +58,17 @@ class MainLayout extends React.Component {
     };
 
     onLogOut = (e) => {
-        localStorage.clear();
-        this.setState({loggedIn: false}); // set logged in to false
-        console.log('LocalStorage Cleared => Logged out')
+        Modal.confirm({
+            title: `Logout confirmation`,
+            content: `are you sure you want logout?`,
+            okType: 'danger',
+            onOk: () => {
+                localStorage.clear();
+                this.setState({loggedIn: false}); // set logged in to false
+                console.log('LocalStorage Cleared => Logged out')
+            }
+        });
+
     };
 
 
