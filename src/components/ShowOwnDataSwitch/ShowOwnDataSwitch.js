@@ -28,7 +28,7 @@ class ShowOwnDataSwitch extends React.Component {
 
     render() {
         return (
-            <>
+            <div className={styles.Container}>
                 <Tooltip title="Login first please!" visible={!(!!this.props.loggedIn)} trigger={'hover'}>
                     <Switch checkedChildren={"View public data"}
                             checked={this.state.on}
@@ -40,7 +40,7 @@ class ShowOwnDataSwitch extends React.Component {
                     </Switch>
                 </Tooltip>
 
-            </>
+            </div>
 
         );
     }

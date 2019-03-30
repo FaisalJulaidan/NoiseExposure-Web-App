@@ -106,10 +106,10 @@ class MainLayout extends React.Component {
                 {/*Login modal*/}
                 <Login onLogin={this.onLogin} visible={this.state.visible} showModal={this.showModal} closeModal={this.closeModal}/>
 
+                <ShowOwnDataSwitch loggedIn={this.state.loggedIn} filterOwnData={this.props.filterOwnData}/>
 
                 {/*Main content of the page i.e. map and table views*/}
                 <Content className={styles.Content}>
-                    <ShowOwnDataSwitch loggedIn={this.state.loggedIn} filterOwnData={this.props.filterOwnData}/>
                     <Switch>
                         <Route path={'/'} exact render={routeData => {
                             return <TableView noiseData={this.props.noiseData}/>

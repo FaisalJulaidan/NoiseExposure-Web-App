@@ -167,7 +167,7 @@ class TableView extends React.Component {
                 size='middle'
                 // scroll={{y: 500, x: 100}}
                 loading={(!(!!noiseData))}
-                expandedRowRender={record => <p style={{ margin: 0 }}>{record.addDetails}</p>}
+                expandedRowRender={record => <p style={{ margin: 0 }}><b>Additional Details:</b> {record.addDetails}</p>}
             />
         </div>
     );
