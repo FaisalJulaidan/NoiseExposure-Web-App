@@ -5,7 +5,7 @@ import styles from './MainLayout.module.css';
 import TableView from '../../components/TableView/TableView'
 import MapView from '../../components/MapView/MapView';
 import {Route, Switch} from 'react-router-dom';
-import {history, http, checkAuthenticity} from "../../utilities";
+import {history, checkAuthenticity, successMessage, errorMessage, loadingMessage} from "../../utilities";
 import Login from '../../components/Login/Login';
 import ShowOwnDataSwitch from '../../components/ShowOwnDataSwitch/ShowOwnDataSwitch'
 
@@ -44,6 +44,7 @@ class MainLayout extends React.Component {
 
 
     onLogin = (email, password) => {
+        loadingMessage("Logging in...");
         axios.post('/api/auth', {email, password})
             .then(response => {
                 console.log(response);
@@ -52,9 +53,11 @@ class MainLayout extends React.Component {
                 localStorage.setItem("refresh", response.data.data.refresh);
                 this.setState({loggedIn: !!checkAuthenticity()});
                 this.closeModal();
+                successMessage("Logged in successfully!")
             })
             .catch(function (error){
-                console.log(error)
+                console.log(error);
+                errorMessage("The credentials you supplied were not correct!")
             })
     };
 
@@ -64,9 +67,11 @@ class MainLayout extends React.Component {
             content: `are you sure you want logout?`,
             okType: 'danger',
             onOk: () => {
+                loadingMessage("Logging out...");
                 localStorage.clear();
                 this.setState({loggedIn: false}); // set logged in to false
                 this.props.filterOwnData(false)
+                successMessage("Logged out successfully!")
             }
         });
     };
