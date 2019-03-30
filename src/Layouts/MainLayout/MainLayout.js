@@ -28,21 +28,21 @@ class MainLayout extends React.Component {
         history.push(`${e.key}`)
     };
 
-    // login modal
+    // show login modal
     showModal = () => {
         this.setState({
             visible: true,
         });
     };
 
-    // login modal
+    // hide login modal
     closeModal = () => {
         this.setState({
             visible: false,
         });
     };
 
-
+    // handle logging in process
     onLogin = (email, password) => {
         loadingMessage("Logging in...");
         axios.post('/api/auth', {email, password})
@@ -61,6 +61,7 @@ class MainLayout extends React.Component {
             })
     };
 
+    // handle logging out process
     onLogOut = (e) => {
         Modal.confirm({
             title: `Logout confirmation`,
@@ -81,7 +82,7 @@ class MainLayout extends React.Component {
     render() {
         return (
             <Layout className={styles.Layout}>
-
+                {/*Nav bar*/}
                 <Header className={styles.Header}>
                     <div className="logo" />
                     <Menu
@@ -102,8 +103,11 @@ class MainLayout extends React.Component {
                     </Menu>
                 </Header>
 
+                {/*Login modal*/}
                 <Login onLogin={this.onLogin} visible={this.state.visible} showModal={this.showModal} closeModal={this.closeModal}/>
 
+
+                {/*Main content of the page i.e. map and table views*/}
                 <Content className={styles.Content}>
                     <ShowOwnDataSwitch loggedIn={this.state.loggedIn} filterOwnData={this.props.filterOwnData}/>
                     <Switch>
@@ -120,7 +124,6 @@ class MainLayout extends React.Component {
                 </Content>
 
                 <Footer className={styles.Footer}>
-
                 </Footer>
             </Layout>
         );
