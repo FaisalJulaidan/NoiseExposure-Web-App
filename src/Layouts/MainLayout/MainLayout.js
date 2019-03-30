@@ -124,6 +124,7 @@ class MainLayout extends React.Component {
                 </Content>
 
                 <Footer className={styles.Footer}>
+                    Cardiff Council 2019. All rights reserved.
                 </Footer>
             </Layout>
         );
