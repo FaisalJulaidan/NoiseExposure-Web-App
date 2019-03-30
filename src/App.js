@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import MainLayout from './Layouts/MainLayout/MainLayout';
 import {http} from './utilities';
 import {withRouter} from 'react-router-dom';
+import {getUser} from "./utilities";
 
 
 class App extends Component {
 
   state = {
-    noiseData: null,
+    noiseData: [],
+    filtered: false
   };
 
   componentWillMount() {
@@ -27,14 +29,17 @@ class App extends Component {
   };
 
   // show can be true or false
-  filerOwnData = (doFilter) => {
-    console.log(doFilter)
+  filterOwnData = (doFilter) => {
+    this.setState({filtered: doFilter})
   };
 
   render() {
+    const {noiseData, filtered} = this.state;
+    const user = getUser();
     return (
       <div className="App">
-          <MainLayout noiseData={this.state.noiseData} filerOwnData={this.filerOwnData}/>
+          <MainLayout noiseData={filtered && user ? noiseData.filter(data => data.userId === user.id) : noiseData}
+                      filterOwnData={this.filterOwnData}/>
       </div>
     );
   }

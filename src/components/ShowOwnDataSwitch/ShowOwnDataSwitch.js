@@ -7,14 +7,23 @@ class ShowOwnDataSwitch extends React.Component {
         on: false
     };
 
-    componentWillReceiveProps(nextProps, nextContext) {
-        if(nextProps.loggedIn){
+    constructor(props){
+        super(props);
+        this.switchEle = React.createRef();
+    }
 
+    componentWillReceiveProps(nextProps, nextContext) {
+        // when user logged out, the switch should go off
+        if(nextProps.loggedIn !== this.props.loggedIn && !nextProps.loggedIn){
+            this.setState({on: false});
+            this.props.filterOwnData(false);
         }
     }
 
+    // based on switch status, noise data should filter or not
     switch = (value) => {
-        this.props.filerOwnData(value)
+        this.setState({on: value});
+        this.props.filterOwnData(value);
     };
 
     render() {
@@ -22,9 +31,11 @@ class ShowOwnDataSwitch extends React.Component {
             <>
                 <Tooltip title="Login first please!" visible={!(!!this.props.loggedIn)} trigger={'hover'}>
                     <Switch checkedChildren={"View public data"}
+                            checked={this.state.on}
                             disabled={!(!!this.props.loggedIn)}
                             unCheckedChildren={"View Your own Data"} type="primary"
-                            onClick={this.switch} className={styles.Switch}>
+                            onClick={this.switch} className={styles.Switch}
+                            ref={this.switchEle}>
                         Show Your Own Data
                     </Switch>
                 </Tooltip>

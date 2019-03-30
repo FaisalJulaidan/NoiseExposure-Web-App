@@ -1,5 +1,6 @@
 import React from 'react';
 import { Layout, Menu, Button, Modal} from 'antd';
+import axios from 'axios';
 import styles from './MainLayout.module.css';
 import TableView from '../../components/TableView/TableView'
 import MapView from '../../components/MapView/MapView';
@@ -43,7 +44,7 @@ class MainLayout extends React.Component {
 
 
     onLogin = (email, password) => {
-        http.post('/auth', {email, password})
+        axios.post('/api/auth', {email, password})
             .then(response => {
                 console.log(response);
                 localStorage.setItem("user", JSON.stringify(response.data.data.user));
@@ -65,10 +66,9 @@ class MainLayout extends React.Component {
             onOk: () => {
                 localStorage.clear();
                 this.setState({loggedIn: false}); // set logged in to false
-                console.log('LocalStorage Cleared => Logged out')
+                this.props.filterOwnData(false)
             }
         });
-
     };
 
 
@@ -100,7 +100,7 @@ class MainLayout extends React.Component {
                 <Login onLogin={this.onLogin} visible={this.state.visible} showModal={this.showModal} closeModal={this.closeModal}/>
 
                 <Content className={styles.Content}>
-                    <ShowOwnDataSwitch loggedIn={this.state.loggedIn} filerOwnData={this.props.filerOwnData}/>
+                    <ShowOwnDataSwitch loggedIn={this.state.loggedIn} filterOwnData={this.props.filterOwnData}/>
                     <Switch>
                         <Route path={'/'} exact render={routeData => {
                             return <TableView noiseData={this.props.noiseData}/>
