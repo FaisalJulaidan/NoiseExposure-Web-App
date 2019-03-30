@@ -19,12 +19,14 @@ class App extends Component {
   // refresh noise data every 3seconds to have real time data
   refreshNoiseData = () => {
     http.get('/noise').then((data) => {
-      this.setState({noiseData: data.data}, () => {
-        // window.setTimeout(() => {
-        //   this.refreshNoiseData();
-        //   console.log("Call")
-        // }, 3000);
-      })
+      if(data && data.data) {
+        this.setState({noiseData: data.data}, () => {
+          // window.setTimeout(() => {
+          //   this.refreshNoiseData();
+          //   console.log("Call")
+          // }, 3000);
+        })
+      }
     })
   };
 
