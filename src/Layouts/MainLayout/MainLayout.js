@@ -67,9 +67,11 @@ class MainLayout extends React.Component {
             content: `are you sure you want logout?`,
             okType: 'danger',
             onOk: () => {
+                loadingMessage("Logging out...");
                 localStorage.clear();
                 this.setState({loggedIn: false}); // set logged in to false
                 this.props.filterOwnData(false)
+                successMessage("Logged out successfully!")
             }
         });
     };
