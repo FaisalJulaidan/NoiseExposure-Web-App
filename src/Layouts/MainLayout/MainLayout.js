@@ -57,7 +57,7 @@ class MainLayout extends React.Component {
             })
             .catch(function (error){
                 console.log(error);
-                errorMessage("Sorry, an error occurred while logging you in!")
+                errorMessage("The credentials you supplied were not correct!")
             })
     };
 
