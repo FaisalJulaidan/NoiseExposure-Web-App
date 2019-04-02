@@ -33,7 +33,7 @@ class ShowOwnDataSwitch extends React.Component {
                     <Switch checkedChildren={"View public data"}
                             checked={this.state.on}
                             disabled={!(!!this.props.loggedIn)}
-                            unCheckedChildren={"View Your own Data"} type="primary"
+                            unCheckedChildren={"View Your Own Data"} type="primary"
                             onClick={this.switch} className={styles.Switch}
                             ref={this.switchEle}>
                         Show Your Own Data
