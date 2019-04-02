@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MainLayout from './Layouts/MainLayout/MainLayout';
-import {destroyMessage, errorMessage} from './utilities';
+import {destroyMessage, errorMessage, successMessage} from './utilities';
 import {withRouter} from 'react-router-dom';
 import {getUser} from "./utilities";
 import axios from 'axios'
@@ -37,7 +37,10 @@ class App extends Component {
 
   // show can be true or false
   filterOwnData = (doFilter) => {
-    this.setState({filtered: doFilter})
+    this.setState({filtered: doFilter}, () => {
+      if(doFilter)
+        successMessage("noise data filtered")
+    })
   };
 
 
