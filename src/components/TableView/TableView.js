@@ -160,7 +160,6 @@ class TableView extends React.Component {
     return (
         <div className={styles.TableView}>
             <Table
-                rowKey="uid"
                 columns={columns}
                 dataSource={noiseData}
                 pagination={{defaultPageSize: 10, position: 'both'}}

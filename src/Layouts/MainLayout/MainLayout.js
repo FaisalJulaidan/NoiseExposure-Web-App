@@ -8,6 +8,7 @@ import {Route, Switch} from 'react-router-dom';
 import {history, checkAuthenticity, successMessage, errorMessage, loadingMessage} from "../../utilities";
 import Login from '../../components/Login/Login';
 import ShowOwnDataSwitch from '../../components/ShowOwnDataSwitch/ShowOwnDataSwitch'
+import LiveModeSwitch from '../../components/LiveModeSwitch/LiveModeSwitch'
 
 const { Header, Content, Footer } = Layout;
 
@@ -106,7 +107,11 @@ class MainLayout extends React.Component {
                 {/*Login modal*/}
                 <Login onLogin={this.onLogin} visible={this.state.visible} showModal={this.showModal} closeModal={this.closeModal}/>
 
-                <ShowOwnDataSwitch loggedIn={this.state.loggedIn} filterOwnData={this.props.filterOwnData}/>
+                <div className={styles.Switchers}>
+                    <ShowOwnDataSwitch loggedIn={this.state.loggedIn} filterOwnData={this.props.filterOwnData}/>
+                    <LiveModeSwitch switchLiveMode={this.props.switchLiveMode} liveMode={this.props.liveMode}/>
+                </div>
+
 
                 {/*Main content of the page i.e. map and table views*/}
                 <Content className={styles.Content}>

@@ -30,10 +30,12 @@ class ShowOwnDataSwitch extends React.Component {
         return (
             <div className={styles.Container}>
                 <Tooltip title="Login first please!" visible={!(!!this.props.loggedIn)} trigger={'hover'}>
-                    <Switch checkedChildren={"View public data"}
+                    <Switch
                             checked={this.state.on}
                             disabled={!(!!this.props.loggedIn)}
-                            unCheckedChildren={"View Your own Data"} type="primary"
+                            checkedChildren={"View Your Own Data"}
+                            unCheckedChildren={"View Your Own Data"}
+                            type="primary"
                             onClick={this.switch} className={styles.Switch}
                             ref={this.switchEle}>
                         Show Your Own Data

@@ -26,6 +26,13 @@
     overflow:auto;
 }
 
+.Switchers{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 0 7.3%;
+}
+
 .Footer {
     text-align: center;
 }

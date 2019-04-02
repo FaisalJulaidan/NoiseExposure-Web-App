@@ -28,7 +28,7 @@ class Login extends React.Component {
                     title="Login"
                     visible={this.props.visible}
                     onOk={this.handleSubmit}
-                    onCancel={this.handleCancel}
+                    onCancel={this.props.closeModal}
                 >
                     <Form className="login-form">
                         <Form.Item>
