@@ -1,4 +1,4 @@
-###### Note: this README file is dedicated for the Web Application side of the project for further details about the other sides of the project i.e. Mobile Application, and Server Side, please check the repositories. You will need to setup all the three repositories for the project to work properly (e.g. retrive data from the database, login, etc.)
+###### Note: this README file is dedicated for the Web Application side of the project for further details about the other sides of the project i.e. Mobile Application, and Server Side, please check their repositories. You will need to install/setup all the three repositories for the project to work properly (e.g. retrive data from the database, login, etc.)
 
 ## Motivation
 
@@ -19,7 +19,7 @@ Our solution is a Mobile Application for the general public that will collect de
 
 ## Tech/framework used
 
-<b>Built with</b>
+**Built with**
 
 * Frontend framework - ReactJS
 * Routing - react-router, history
@@ -42,8 +42,21 @@ Our solution is a Mobile Application for the general public that will collect de
 
 
 ## Project Installation
-1. clone the project
+##### 1. Clone the project
 
+```bash
+git clone git@gitlab.cs.cf.ac.uk:c1628682/nea_web.git
+```
+
+##### 2. Install dependencies 
+```bash
+npm install
+```
+
+##### 2. Start the application 
+```bash
+npm run start
+```
 
 
 ## How to Use the Web Application
