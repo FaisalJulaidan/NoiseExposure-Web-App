@@ -1,4 +1,4 @@
-###### Note: this README file is dedicated for the Web Application side of the project for further details about the other sides of the project i.e. Mobile Application, and Server Side, please check the repositories
+###### Note: this README file is dedicated for the Web Application side of the project for further details about the other sides of the project i.e. Mobile Application, and Server Side, please check the repositories. You will need to setup all the three repositories for the project to work properly (e.g. retrive data from the database, login, etc.)
 
 ## Motivation
 
@@ -21,9 +21,7 @@ Our solution is a Mobile Application for the general public that will collect de
 
 <b>Built with</b>
 
-* Front-end framework - ReactJS
-* Backend - Node.js server
-* Frontend - React.js client
+* Frontend framework - ReactJS
 * Routing - react-router, history
 * Map - google-maps-react
 * HTTP Client - axios
@@ -38,7 +36,6 @@ Our solution is a Mobile Application for the general public that will collect de
 - [x] Notifications
 - [x] Noise data view in table and map
 - [x] Filter, sort, search noise data
-- [x] Filter, sort, search noise data
 - [x] View personal noise data for logged in users (recorded via the Mobile app)
 - [x] Highly dynamic and customised design
 
@@ -52,7 +49,7 @@ Our solution is a Mobile Application for the general public that will collect de
 ## How to Use the Web Application
 All the data avaiable in the application is public and doesn't require loggin in, howerver, when logged in, you can filter and view your personal noise data
 
-Please use the below test accounts login  
+Please use the below test accounts to login:
 
 username: *test@test.com*  
 password: *123*  
@@ -61,6 +58,9 @@ username: *test2@test.com*
 password: *123*  
 
 To view your personal data, trun on the "view your own data" switcher at the right top cornet of the page which become activated after you are logged in  
+
+
+
 
 ## Available Scripts
 
