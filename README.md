@@ -72,7 +72,14 @@ password: *123*
 
 To view your personal data, trun on the "view your own data" switcher at the right top cornet of the page which become activated after you are logged in  
 
+## Status Code
 
+The kind of responses you might recieve are
+- 200 - OK
+- 400 - Bad Request
+- 500 - Internal Server Error
+- 401 - Unauthorized
+- 201 - Created (Resource created)
 
 
 ## Available Scripts
@@ -141,3 +148,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+## Contributors
+Faisal, Ieuan, Joey, and Matthew
