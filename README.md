@@ -53,12 +53,14 @@ Our solution is a Mobile Application for the general public that will collect de
 All the data avaiable in the application is public and doesn't require loggin in, howerver, when logged in, you can filter and view your personal noise data
 
 Please use the below test accounts login  
+
 username: *test@test.com*  
 password: *123*  
 
 username: *test2@test.com*  
 password: *123*  
 
+To view your personal data, trun on the "view your own data" switcher at the right top cornet of the page which become activated after you are logged in  
 
 ## Available Scripts
 
