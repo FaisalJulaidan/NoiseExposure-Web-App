@@ -1,4 +1,3 @@
-
 ###### Note: this README file is dedicated for the Web Application side of the project for further details about the other sides of the project i.e. Mobile Application, and Server Side, please check the repositories
 
 ## Motivation
@@ -42,6 +41,24 @@ Our solution is a Mobile Application for the general public that will collect de
 - [x] Filter, sort, search noise data
 - [x] View personal noise data for logged in users (recorded via the Mobile app)
 - [x] Highly dynamic and customised design
+
+
+
+## Project Installation
+1. clone the project
+
+
+
+## How to Use the Web Application
+All the data avaiable in the application is public and doesn't require loggin in, howerver, when logged in, you can filter and view your personal noise data
+
+Please use the below test accounts login  
+username: *test@test.com*  
+password: *123*  
+
+username: *test2@test.com*  
+password: *123*  
+
 
 ## Available Scripts
 
