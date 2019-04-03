@@ -9,61 +9,26 @@ class Login extends React.Component {
         password: '' 
     };
 
-    showModal = () => {
-        this.setState({
-            visible: true,
-        });
-    };
-
-    closeModal = () => {
-        this.setState({
-            visible: false,
-        });
-    };
-
-    handleCancel = (e) => {
-        console.log(e);
-        this.setState({
-            visible: false,
-        });
-    };
 
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log('Received values of form: ', values);
-                this.onLogIn(values.email, values.password)
+                this.props.onLogin(values.email, values.password)
             }
         });
-    };
-
-    onLogIn = (email, password) => {
-        http.post('/auth', {email, password})
-        .then(response => {
-            console.log(response)
-            localStorage.setItem("user", JSON.stringify(response.data.data.user));
-            localStorage.setItem("token", response.data.data.token);
-            localStorage.setItem("refresh", response.data.data.refresh);
-            this.closeModal();
-        })
-        .catch(function (error){
-            console.log(error)
-        })
     };
 
     render() {
         const { getFieldDecorator } = this.props.form;
         return (
-            <div>
-                <Switch checkedChildren={"View public data"} unCheckedChildren={"View Your own Data"} type="primary" onClick={this.showModal} className={styles.Switch}>
-                    Show Your Own Data
-                </Switch>
+            <>
                 <Modal
                     title="Login"
-                    visible={this.state.visible}
+                    visible={this.props.visible}
                     onOk={this.handleSubmit}
-                    onCancel={this.handleCancel}
+                    onCancel={this.props.closeModal}
                 >
                     <Form className="login-form">
                         <Form.Item>
@@ -98,8 +63,7 @@ class Login extends React.Component {
                         </Form.Item>
                     </Form>
                 </Modal>
-            </div>
-
+            </>
         );
     }
 }

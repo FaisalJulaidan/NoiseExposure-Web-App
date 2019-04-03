@@ -74,6 +74,7 @@ class TableView extends React.Component {
 
     render() {
         const {noiseData} = this.props;
+        // These are the columns for the the noise data table
         const columns = [
             {
                 title: '#',
@@ -159,13 +160,13 @@ class TableView extends React.Component {
     return (
         <div className={styles.TableView}>
             <Table
-                rowKey="uid"
                 columns={columns}
                 dataSource={noiseData}
                 pagination={{defaultPageSize: 10, position: 'both'}}
                 size='middle'
                 // scroll={{y: 500, x: 100}}
                 loading={(!(!!noiseData))}
+                expandedRowRender={record => <p style={{ margin: 0 }}><b>Additional Details:</b> {record.addDetails}</p>}
             />
         </div>
     );

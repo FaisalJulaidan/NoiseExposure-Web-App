@@ -1,25 +1,64 @@
 import React, { Component } from 'react';
 import MainLayout from './Layouts/MainLayout/MainLayout';
-import {http} from './utilities';
+import {destroyMessage, errorMessage, successMessage} from './utilities';
 import {withRouter} from 'react-router-dom';
+import {getUser} from "./utilities";
+import axios from 'axios'
 
 
 class App extends Component {
 
   state = {
-    noiseData: null,
+    noiseData: [],
+    filtered: false,
+    liveMode: true,
   };
 
   componentWillMount() {
-    http.get('/noise').then((data) => {
-      this.setState({noiseData: data.data})
-    })
+
+    // for live mode feature
+    window.setInterval(() => {
+      if(this.state.liveMode) {
+        this.refreshNoiseData();
+      }
+    }, 4000);
+
   }
 
+
+  refreshNoiseData = () => {
+    axios.get('/api/noise').then((data) => {
+      if(data && data.data) {
+        this.setState({noiseData: data.data});
+        destroyMessage();
+      }
+    }).catch(()=> errorMessage("Couldn't load noise data :("))
+  };
+
+  // show can be true or false
+  filterOwnData = (doFilter) => {
+    this.setState({filtered: doFilter}, () => {
+      if(doFilter)
+        successMessage("noise data filtered")
+    })
+  };
+
+
+  // turn on/off live mode
+  switchLiveMode = (value) => {
+    this.setState({liveMode: value})
+  };
+
   render() {
+    const {noiseData, filtered} = this.state;
+    const user = getUser();
     return (
       <div className="App">
-          <MainLayout noiseData={this.state.noiseData}/>
+          <MainLayout noiseData={filtered && user ? noiseData.filter(data => data.userId === user.id) : noiseData}
+                      filterOwnData={this.filterOwnData}
+                      switchLiveMode={this.switchLiveMode}
+                      liveMode={this.state.liveMode}
+          />
       </div>
     );
   }

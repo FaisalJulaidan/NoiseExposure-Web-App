@@ -26,12 +26,13 @@
     overflow:auto;
 }
 
-.Footer {
-    text-align: center;
+.Switchers{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 0 7.3%;
 }
 
-.Switch {
-    position: fixed;
-    left: 85%;
-    bottom: 80%;
+.Footer {
+    text-align: center;
 }
