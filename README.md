@@ -1,4 +1,6 @@
-###### Note: this README file is dedicated for the Web Application side of the project for further details about the other sides of the project i.e. Mobile Application, and Server Side, please check their repositories. You will need to install/setup all the three repositories for the project to work properly (e.g. retrive data from the database, login, etc.)
+###### Note: this README file is dedicated for the Web Application side of the project for further details about the other sides of the project i.e. Mobile Application, and Server Side, please check their repositories. You will need to install/setup all the three repositories for the project to work properly (e.g. retrive data from the database, login, etc.)  
+
+###### Note: Make sure that the two sides, Mobile and Web Application, have the same IP address of the server. For furter deatils check the Project Installation section in every side's README file
 
 ## Motivation
 
@@ -53,7 +55,14 @@ git clone git@gitlab.cs.cf.ac.uk:c1628682/nea_web.git
 npm install
 ```
 
-##### 2. Start the application 
+##### 3. Change IP adress on line 5 in package.json to your device's IP address that runs the Flask server
+```bash
+"proxy": "http://'Your IP Address':5000",
+# "proxy": "http://192.168.43.20:5000",
+
+```
+
+##### 4. Start the application 
 ```bash
 npm run start
 ```
